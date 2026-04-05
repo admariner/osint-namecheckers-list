@@ -1,195 +1,152 @@
-# OSINT namecheckers list
+# Curated OSINT namecheckers
 
-A list of tools to search accounts by username with pros and cons.
+A curated list of tools and sites for **username search**, **account discovery**, and **username availability** (“namecheck”) across social networks and the web. It focuses on namecheckers and related workflows—not general OSINT as a whole.
 
-## Table of Contents
-- [Scripts](#scripts)
-- [APIs](#apis)
-- [OSINT Online Tools](#osint-online-tools)
-- [Branding Tools](#branding-tools)
+## Contents
+
+- [Open source tools](#open-source-tools)
+- [OSINT online tools](#osint-online-tools)
+- [Branding](#branding)
 - [Toolkits](#toolkits)
-- [Useful Links](#useful-links)
+- [Useful links](#useful-links)
+- [Contributing](#contributing)
+- [Disclaimer](#disclaimer)
+- [License](#license)
 
-### Scripts
+## Open source tools
 
-#### [Sherlock](https://github.com/sherlock-project/sherlock)
-* hunts down social media accounts by username across around 400 social networks
-* has web-cli deployments 👍
-* batch search 👍
-* tor & proxy support 👍
-* alexa top ranking 👍
-* adding custom sites & rules
-* csv reports
-* false positives
+- [Maigret](https://github.com/soxoj/maigret) — Username search with the largest site set and profile parsing.
+  - 3100+ sites 👍; profile parsing (PII, links to other profiles) 👍; recursive search on newly found usernames 👍; filter by country/category tags 👍; very few false positives 👍; censorship and captcha detection; `pip install maigret`.
 
-#### [Maigret](https://github.com/soxoj/maigret)
-* sherlock fork, all its pros and cons so
-* 3100+ sites 👍
-* profile pages parsing and extracting personal info, links to other profiles, etc. 👍
-* recursive search by new usernames found 👍
-* searching by countries and categories by tags 👍
-* very few false positives 👍
-* censorship and captcha detection
+- [Sherlock](https://github.com/sherlock-project/sherlock) — The original username hunter; mature, widely packaged.
+  - 479 sites; batch search 👍; Tor and proxy support 👍; CSV/XLSX/JSON export 👍; custom sites and rules; `pipx install sherlock-project`; also Docker, dnf, Homebrew.
 
-#### [social-analyzer](https://github.com/qeeqbox/social-analyzer)
-* 1000+ sites 👍
-* web interface 👍
-* multilayers detections (OCR, normal, advanced & special) 👍
-* metadata extraction
+- [Enola](https://github.com/TheYahya/enola) — Fast Go-based username hunter with modern CLI.
+  - 407 sites; Go single binary 👍; Docker support; CSV/JSON export; `go install github.com/theyahya/enola/cmd/enola@latest`.
 
-#### [WhatsMyName](https://github.com/webbreacher/whatsmyname)
-* username enumeration on around 600 various websites
-* adding custom sites & rules
+- [Snoop](https://github.com/snooppr/snoop) — Username search with the largest raw site count; partially paid.
+  - ~350 sites in free demo, 5300+ in paid full version 👍; country ranking and filtering 👍; multi-format reports (CSV/HTML/maps) 👍; geolocation plugins; Android/Termux support; binary releases.
 
-#### [DetectDee](https://github.com/piaolin/DetectDee)
-* hunt down social media accounts by username, email or phone across social networks
-* 372 sites
-* screenshots 👍
+- [Aliens Eye](https://github.com/arxhr007/Aliens_eye) — AI-powered username scanner with confidence scoring.
+  - 841 sites 👍; AI-enhanced detection with confidence scoring (0–100%) 👍; three scan levels (basic/intermediate/advanced); username variation generation; JSON reporting; multi-OS including Android/Termux; `pip install -r requirements.txt`.
 
-#### [nexfil](https://github.com/thewhiteh4t/nexfil)
-* 350 sites
-* fast, lookup can complete under 20 seconds
+- [Blackbird](https://github.com/p1ngul1n0/blackbird) — Username and email search using the WhatsMyName database.
+  - 600+ sites 👍; email search 👍; AI-powered profiling (free) 👍; PDF/CSV/JSON export 👍; category filtering; NSFW sites included by default; `pip install -r requirements.txt`.
 
-#### [Snoop](https://github.com/snooppr/snoop)
-* sherlock fork, all its pros and cons so
-* 271 sites in demo version, around 4200+ sites in full paid version
-* country ranking & filtering 👍
-* html and csv reports
-* difficult to install and use 🚫
+- [WhatsMyName](https://github.com/webbreacher/whatsmyname) — Community-maintained site-check database (data only, no built-in checker).
+  - 732 sites 👍; JSON format used by Blackbird, Naminter, recon-ng, Maltego, SpiderFoot, and others; web UI at [whatsmyname.app](https://whatsmyname.app/).
 
-#### [thorndyke](https://github.com/rly0nheart/thorndyke)
-* Lightweight username enumeration tool
-* checks the availability of a specified username on over 200 websites
-* no longer supported 🚫
+- [Naminter](https://github.com/3xp0rt/Naminter) — Async username enumeration using the WhatsMyName dataset.
+  - 730+ sites 👍; TLS-level browser impersonation via curl_cffi (bypasses Cloudflare and bot detection that block tools using plain requests/aiohttp) 👍; category filtering 👍; PDF/CSV/JSON/HTML export 👍; `pip install naminter`; also Docker.
 
-#### [sagemode](https://github.com/senran101604/sagemode)
-* simple and effective OSINT username search tool
-* around 150 sites
+- [social-analyzer](https://github.com/qeeqbox/social-analyzer) — Large-scale username search with layered detection.
+  - 999 sites 👍; web UI 👍; multilayer detection (OCR, normal, advanced, special) 👍; metadata extraction; `pip install social-analyzer`; no granular confidence scoring — `maybe` status produces false positives 🚫.
 
-#### [Userrecon](https://github.com/wishihab/userrecon)
-* finds usernames across over 75 social networks 
-* original repository is unavailable
-* no longer supported 🚫
+- [nexfil](https://github.com/thewhiteh4t/nexfil) — Lightweight and fast username search.
+  - 328 sites; batch processing 👍; results auto-saved to text files; `pip install nexfil`; no longer maintained (last commit Sep 2023) 🚫.
 
-#### [NicknameFinder](https://github.com/restanse/NicknameFinder)
-* 45 sites in database
+- [DetectDee](https://github.com/piaolin/DetectDee) — Search by username, email, or phone; written in Go.
+  - 372 sites; screenshot capture 👍; WAF evasion; ChatGPT integration for result tagging; Google search integration; pre-compiled binaries; no longer maintained (last commit Jul 2023) 🚫.
 
-#### [Gideon](https://github.com/YouVBeenHacked/gideon)
-* 44 sites in database
+- [tookie-osint](https://github.com/Alfredredbird/tookie-osint) — Username discovery with a web UI.
+  - 261 sites; headless mode; CSV export; multi-OS installer scripts; ~20% false positives 🚫.
 
-#### [Arina-OSINT](https://github.com/AlexC-ux/Arina-OSINT)
-* 42 sites in database
+- [Investigo](https://github.com/tdh8316/Investigo) — Go-based tool using Sherlock’s site database.
+  - Uses Sherlock DB 👍; concurrent requests (32 default) 👍; Tor proxy support; content downloading; `go build`.
 
-#### [netizenship](https://github.com/rahulrajpl/netizenship)
-* 38 sites in database
+- [sagemode](https://github.com/senran101604/sagemode) — Simple username search.
+  - 146 sites; real-time CLI output; known false positives on some platforms 🚫; no longer maintained (last commit Dec 2023) 🚫.
 
-#### [Search4](https://github.com/0xknown/Search4)
-* 35 sites in database
-* small and fast
+- [Arina-OSINT](https://github.com/AlexC-ux/Arina-OSINT) — Username search written in C#.
+  - 76 sites; requires .NET Core 3.1; no longer maintained (last commit Mar 2022) 🚫.
 
-#### [Socialscan](https://github.com/iojw/socialscan)
-* checks for **email** and username usage on 12 platforms 
-* uses api, not a direct userpage link 👍
+- [Userrecon](https://github.com/wishihab/userrecon) — Bash-based username search.
+  - 66 sites; shell script (no dependencies); many checks broken (Instagram, Facebook, Twitter flagged); no longer maintained (last commit Feb 2021) 🚫.
 
-#### [sherlock-go](https://github.com/mesuutt/sherlock)
-* faster and minimal implementation of sherlock written in Go
-* no longer maintained
+- [NicknameFinder](https://github.com/restanse/NicknameFinder) — Username search organized by site categories.
+  - 44 sites (forums, games, social, finance); no longer maintained (last commit Apr 2021) 🚫.
 
-#### [Investigo](https://github.com/tdh8316/Investigo)
-* can take screenshots with headless chromium 👍
-* uses sherlock database
+- [netizenship](https://github.com/rahulrajpl/netizenship) — Multi-threaded username search.
+  - 36 sites; `pip install netizenship`; no longer maintained (last commit Dec 2021) 🚫.
 
-#### [recon-ng](https://github.com/lanmaster53/recon-ng/)
-* have a profiler module using WhatsMyName database
+- [Search4](https://github.com/0xknown/Search4) — Small and fast username search.
+  - 35 sites; multi-threaded; `pip install search4`; no longer maintained (last commit Jul 2022) 🚫.
 
-#### [SocialPath](https://github.com/woj-ciech/SocialPath)
-* track users across 10 popular social media platforms
-* extract details info from 4 platforms
-* web interface
+- [Socialscan](https://github.com/iojw/socialscan) — Checks **email** and username availability via registration APIs (not profile URLs).
+  - 11 platforms (Instagram, Twitter, GitHub, Tumblr, GitLab, Reddit, etc.) 👍; 100% accuracy by querying signup endpoints 👍; async (100 queries in ~4 sec) 👍; `pip install socialscan`.
 
-#### [tookie-osint](https://github.com/Alfredredbird/tookie-osint)
-* hunts down social media accounts
-* 261 sites in the database
-* has a WebUI
-* has some false positives (≈20%)
-* difficult to install and use 🚫
+- [recon-ng](https://github.com/lanmaster53/recon-ng/) — Full OSINT reconnaissance framework with a WhatsMyName profiler module.
+  - Modular Metasploit-like architecture 👍; interactive console with tab completion 👍; REST API and web UI 👍; Docker support; username check is one module among many.
 
-### APIs
+- [SocialPath](https://github.com/woj-ciech/SocialPath) — Track users across 10 platforms with deeper extraction on 4; web UI.
+  - Django-based web interface; detailed data extraction (Twitter, StackOverflow, Instagram, Reddit); requires API keys; no longer maintained (last commit Jan 2021) 🚫.
 
-#### [Social Scanner](https://rapidapi.com/hailbytes-hailbytes-default/api/social-scanner/)
-* 996 social networks with links to each profile in JSON
-* implementation of social-analyzer
+- [thorndyke](https://github.com/rly0nheart/thorndyke) — Lightweight username enumeration.
+  - 200+ sites; `pip install thorndyke`; archived by author — no longer supported 🚫.
 
-### OSINT Online Tools
+- [sherlock-go](https://github.com/mesuutt/sherlock) — Minimal Go implementation of Sherlock.
+  - ~164 sites; faster than Python original; pre-compiled binaries; no longer maintained (last commit Aug 2019) 🚫.
 
-Websites to search accounts from your browser. Usually there are advertising and logging of requests.
+- [Gideon](https://github.com/YouVBeenHacked/gideon) — OSINT tool for phone numbers, car plates, nicknames, and torrents by IP.
+  - Russian-focused; username search is a secondary feature; no longer maintained (last commit Nov 2020) 🚫.
 
-#### [WhatsMyName](https://whatsmyname.app/)
-* username enumeration on around 250 various websites
-* web-gui for searching for [WhatsMyName](https://github.com/webbreacher/whatsmyname) data
-* rich filtering by category
+## OSINT online tools
 
-#### [Usersearch](https://usersearch.org/)
-* 120 popular websites, 100+ generic forums , 6 dating sites and crypto forums
+Websites to search from a browser. Many show ads and may log requests.
 
-#### [analyzeid username checker](https://analyzeid.com/username/)
-* more than 80 social sites
-* gather information on the taken username and get a summary of who the person is 👍
+- [WhatsMyName](https://whatsmyname.app/) — ~250 sites; web UI for the [WhatsMyName](https://github.com/webbreacher/whatsmyname) dataset; rich category filters.
 
-#### [iDCrawl](https://www.idcrawl.com/username)
-* 12 sites
+- [Usersearch](https://usersearch.org/) — ~120 popular sites, 100+ generic forums, 6 dating sites, crypto forums.
 
-#### [suIP.biz](https://suip.biz/ru/?act=sherlock)
-* yet another sherlock online
+- [analyzeid username checker](https://analyzeid.com/username/) — 80+ social sites; summarizes what public signals suggest about a taken username 👍.
 
-#### [Usersherlock](http://usersherlock.com/)
-*website is down*
+- [iDCrawl](https://www.idcrawl.com/username) — 12 sites.
 
-## Branding tools
+- [suIP.biz](https://suip.biz/ru/?act=sherlock) — Online Sherlock-style checker.
 
-The main goal of branding tools is to search for the availability of usernames on social platforms and sites, not to search for users.
-These tools are used by marketers to brand securing and promotion.
-One of the features of such tools is a domain name search similar to a search by username.
 
-#### [Knowem](https://knowem.com/) (updated Checkusernames)
-* searches over 550 popular social networks, over 150 domain names
-* 15 categories of social networks
-* trademarks checks
+## Branding
 
-#### [Namecheckup](http://namecheckup.com/)
-* checks social media username availability over 270+ social networks and sites and check 45 TLDs
+These tools focus on **username availability** and brand/domain squatting checks—not on finding a specific person’s accounts. Marketers often use them for brand protection; many include domain checks alongside social handles.
 
-#### [InstantUsername](https://instantusername.com/)
-* checks username availability for more than 100 social media sites
-* [open source](https://github.com/instant-username-search) 👍
 
-#### [Checkusernames](https://checkusernames.com/)
-* checks the use of your brand or username on 160 Social Networks
+- [Namecheckup](http://namecheckup.com/) — 270+ networks and sites; 45 TLDs.
 
-#### [CHECKUSER.org](https://checkuser.org)
-* checks popular domains and 52 social media sites
+- [InstantUsername](https://instantusername.com/) — 100+ social sites; [open source](https://github.com/instant-username-search) 👍.
 
-#### [Namechk](https://namechk.com/)
-* finds an available username over 96 sites and 36 domain names
 
-#### [Namecheckr](https://www.namecheckr.com/)
-* checks domain & social username availability across 38 networks and 17 TLDs
+- [CHECKUSER.org](https://checkuser.org) — Popular domains plus 52 social sites.
 
-#### [Checkerapi](https://app.swaggerhub.com/apis/checker/api)
-* checks 6 services for username availability
-* [open source](https://github.com/checker/api) 👍
+- [Namechk](https://namechk.com/) — Availability across 96 sites and 36 TLDs.
 
+- [Namecheckr](https://www.namecheckr.com/) — Domains and social handles across 38 networks and 17 TLDs.
+
+- [Checkerapi](https://app.swaggerhub.com/apis/checker/api) — Six services; [open source](https://github.com/checker/api) 👍.
 
 ## Toolkits
 
-- [One-plus OSINT Toolkit](https://one-plus.github.io/EmailUsername)
+- [One-plus OSINT Toolkit](https://one-plus.github.io/EmailUsername) — Email/username-oriented OSINT toolkit.
 
-- [Aware-online](https://www.aware-online.com/en/osint-tools/username-search-tool/)
+- [Aware-online username search](https://www.aware-online.com/en/osint-tools/username-search-tool/) — Browser-based username search tool.
 
-- [Lullar](https://com.lullar.com/)
+- [Lullar](https://com.lullar.com/) — Email/username lookup (com.lullar.com).
 
 ## Useful links
 
-* [OSINT Handbook September 2020 (see "Username Check")](https://i-intelligence.eu/uploads/public-documents/OSINT_Handbook_2020.pdf)
-* [Nixintel's OSINT Resource List (see "Usernames & People Searches"](https://start.me/p/rx6Qj8/nixintel-s-osint-resource-list)
-* [What’s wrong with namecheckers?](https://soxoj.medium.com/whats-wrong-with-namecheckers-981e5cba600e)
+- [OSINT Handbook (Sept 2020) — “Username Check”](https://i-intelligence.eu/uploads/public-documents/OSINT_Handbook_2020.pdf)
+
+- [OH SHINT! — Usernames](https://ohshint.gitbook.io/oh-shint-its-a-blog/osint-web-resources/usernames) — Curated list of username OSINT resources.
+
+- [What’s wrong with namecheckers?](https://soxoj.medium.com/whats-wrong-with-namecheckers-981e5cba600e) — Essay on limitations of namechecking tools.
+
+## Contributing
+
+Pull requests are welcome. Add one line per tool in the form `- [Name](url) — short summary` (optional indented sub-bullets for notable pros/cons). Prefer maintained projects and working links; note unmaintained or broken services in the line text. Avoid duplicate entries and pure spam.
+
+## Disclaimer
+
+Use these tools **lawfully and ethically**, only on data you are allowed to access, and in line with each platform’s terms and applicable law. This list is for **defensive OSINT and research**; authors of this repository are not responsible for misuse.
+
+## License
+
+This repository is licensed under the [MIT License](LICENSE).
