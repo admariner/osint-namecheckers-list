@@ -123,6 +123,8 @@ These tools focus on **username availability** and brand/domain squatting checks
 
 - [Checkerapi](https://app.swaggerhub.com/apis/checker/api) — Six services; [open source](https://github.com/checker/api) 👍.
 
+- [360username](https://360username.com/) — AI-powered Domain name and sicial media username generator and checker.
+
 ## Toolkits
 
 - [One-plus OSINT Toolkit](https://one-plus.github.io/EmailUsername) — Email/username-oriented OSINT toolkit.
