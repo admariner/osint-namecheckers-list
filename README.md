@@ -72,6 +72,9 @@ A curated list of tools and sites for **username search**, **account discovery**
 - [Search4](https://github.com/0xknown/Search4) — Small and fast username search.
   - 35 sites; multi-threaded; `pip install search4`; no longer maintained (last commit Jul 2022) 🚫.
 
+- [Stalkie](https://github.com/ashendilantha/stalkie) — Go-based username scanner with confidence scoring and headless browser mode.
+  - 13 sites; confidence scoring (0–100%) with multi-signal analysis (HTTP status, title match, body mentions) 👍; script-tag stripping to reduce false negatives 👍; login wall detection 👍; headless browser via go-rod for JS-heavy sites 👍; Tor/SOCKS5 proxy support; bulk input; CSV/JSON/TXT export; `go build`.
+
 - [Socialscan](https://github.com/iojw/socialscan) — Checks **email** and username availability via registration APIs (not profile URLs).
   - 11 platforms (Instagram, Twitter, GitHub, Tumblr, GitLab, Reddit, etc.) 👍; 100% accuracy by querying signup endpoints 👍; async (100 queries in ~4 sec) 👍; `pip install socialscan`.
 
