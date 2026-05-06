@@ -147,6 +147,11 @@ These tools focus on **username availability** and brand/domain squatting checks
 
 - [What’s wrong with namecheckers?](https://soxoj.medium.com/whats-wrong-with-namecheckers-981e5cba600e) — Essay on limitations of namechecking tools.
 
+## SOWEL Classification
+
+- [SOWEL-8. Using Nicknames](https://sowel.soxoj.com/using-nicknames)
+- [SOTL-6.2. Check Nicknames Reuse to Find Another Account](https://sowel.soxoj.com/nicknames-reuse)
+
 ## Contributing
 
 Pull requests are welcome. Add one line per tool in the form `- [Name](url) — short summary` (optional indented sub-bullets for notable pros/cons). Prefer maintained projects and working links; note unmaintained or broken services in the line text. Avoid duplicate entries and pure spam.
