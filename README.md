@@ -60,6 +60,9 @@ A curated list of tools and sites for **username search**, **account discovery**
 - [Arina-OSINT](https://github.com/AlexC-ux/Arina-OSINT) — Username search written in C#.
   - 76 sites; requires .NET Core 3.1; no longer maintained (last commit Mar 2022) 🚫.
 
+- [GhostTrack](https://github.com/HunxByts/GhostTrack) — Multi-purpose OSINT tool (IP, phone, username) with interactive menu.
+  - 24 sites for username tracking; primary focus is on IP/phone lookup, username search is one of four menu options; HTTP 200 status code check only — high false positive rate 🚫; no longer maintained (last commit Jan 2024) 🚫.
+
 - [Userrecon](https://github.com/wishihab/userrecon) — Bash-based username search.
   - 66 sites; shell script (no dependencies); many checks broken (Instagram, Facebook, Twitter flagged); no longer maintained (last commit Feb 2021) 🚫.
 
