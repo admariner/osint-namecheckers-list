@@ -39,6 +39,9 @@ A curated list of tools and sites for **username search**, **account discovery**
 - [Naminter](https://github.com/3xp0rt/Naminter) — Async username enumeration using the WhatsMyName dataset.
   - 730+ sites 👍; TLS-level browser impersonation via curl_cffi (bypasses Cloudflare and bot detection that block tools using plain requests/aiohttp) 👍; category filtering 👍; PDF/CSV/JSON/HTML export 👍; `pip install naminter`; also Docker.
 
+- [Linkook](https://github.com/JackJuly/linkook) — Recursive linked-account discovery with email/breach checks and Neo4j export.
+  - 64 sites; **recursive linked-account search** — extracts connected profiles from each found page (e.g., Linktree → Instagram/SoundCloud, Dev.to → GitHub), so it can discover accounts even when the target uses different usernames across platforms 👍; email discovery + breach check via HudsonRock's Cybercrime Intelligence DB or Have I Been Pwned API 👍; Neo4j-friendly JSON export for graph visualization 👍; default scan covers only 10 "connected" sites, use `--scan-all` for full coverage; `pipx install linkook`.
+
 - [social-analyzer](https://github.com/qeeqbox/social-analyzer) — Large-scale username search with layered detection.
   - 999 sites 👍; web UI 👍; multilayer detection (OCR, normal, advanced, special) 👍; metadata extraction; `pip install social-analyzer`; no granular confidence scoring — `maybe` status produces false positives 🚫.
 
